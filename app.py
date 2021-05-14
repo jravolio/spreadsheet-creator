@@ -68,7 +68,9 @@ while True:
     elif resposta_adicionar_nova_linha.lower() =='n':
         break
 
+nome_para_salvar = input('Qual o nome deseja salvar sua planilha?')
+
 #row - linha
 # column - coluna
 
-wb.save('testando.xlsx')
+wb.save(f'{nome_para_salvar}.xlsx')
