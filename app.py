@@ -31,27 +31,38 @@ criar_pagina_planilha()
 
 while True:
     resposta_criar_planilha = input('Deseja criar mais uma página nesta planilha? (s/n): ')
-    if resposta_criar_planilha.lower() == 's':
+    if resposta_criar_planilha.lower() == 's' or resposta_criar_planilha.lower() =='sim':
         criar_pagina_planilha()
-    elif resposta_criar_planilha.lower() =='n':
+    elif resposta_criar_planilha.lower() =='n' or resposta_criar_planilha.lower() =='não' or resposta_criar_planilha.lower() =='nao':
         del wb['Sheet']
         limpar_terminal()
         print(colors.yellow + str(wb.sheetnames) + colors.end)
         break
+    else:
+        print(colors.red + 'Por favor digite uma resposta válida!' + colors.end)
+
 
 while True:
-    planilha_a_manipular = input('Escolha a planilha que deseja manipular: ')
-    planilha_selecionada = wb[planilha_a_manipular]
-    lista = ([])
+    while True:
+        try:
+            planilha_a_manipular = input('Escolha a planilha que deseja manipular: ')
+            planilha_selecionada = wb[planilha_a_manipular]
+            lista = ([])
+            break
+        except KeyError as planilha_inexistente:
+            print(colors.red + 'Digite uma planilha existente!' + colors.end)
 
     while True:
         lista.append(input('Digite um nome para seu cabeçalho: '))
         resposta_cabecalho = input(colors.green + 'Deseja adicionar mais uma coluna? (s/n): '+ colors.end)
-        if resposta_cabecalho.lower() == 's':
+        if resposta_cabecalho.lower() == 's' or resposta_cabecalho.lower() =='sim':
             pass
-        elif resposta_cabecalho.lower() =='n':
+        elif resposta_cabecalho.lower() =='n' or resposta_cabecalho.lower() =='nao' or resposta_cabecalho.lower() =='não':
             planilha_selecionada.append(lista)
             break
+        else:
+            print(colors.red + 'Digite uma resposta válida! Apagando dados de cabeçalho escritos posteriormente!' + colors.end)
+            lista = ([])
         
     adicionar_mais_dados = input('Deseja adicionar dados a essa planilha? (s/n): ')
     limpar_terminal()
@@ -59,7 +70,10 @@ while True:
         pass
     elif adicionar_mais_dados.lower() == 'n':
         break
-        
+    else:
+        print(colors.red + 'Não foi possível entender sua resposta, Finalizando programa...' + colors.end)
+        break
+
     print(colors.yellow + f'Você está manipulando a planilha: {planilha_selecionada}'+ colors.end)
     lista = ([])
 
@@ -80,10 +94,10 @@ while True:
     if manipular2.lower() == 's':
         pass
     elif manipular2.lower() =='n':
+        limpar_terminal()
         break
 
 
-limpar_terminal()
 
 nome_para_salvar = input('Qual o nome deseja salvar sua planilha? ')
 
