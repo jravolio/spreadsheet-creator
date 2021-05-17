@@ -96,7 +96,8 @@ while True:
     elif manipular2.lower() =='n':
         limpar_terminal()
         break
-
+    else:
+        print(colors.red + 'Não foi possível identificar sua resposta, parando a execução do programa!' + colors.end)
 
 
 nome_para_salvar = input('Qual o nome deseja salvar sua planilha? ')
