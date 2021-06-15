@@ -5,4 +5,4 @@ Programa criado com o objetivo de acelerar a criação de planilhas, fazendo com
 e indicações para melhor entendimento do usuário
 
 ## Tecnologias utilizadas
-Para essa aplicação foi utilizaado a bilbioteca openpyxl e o módulo os.
+Para essa aplicação foi utilizaado a **bilbioteca openpyxl e o módulo os.**
